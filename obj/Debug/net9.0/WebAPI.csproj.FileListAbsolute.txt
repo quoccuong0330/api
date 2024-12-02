@@ -138,3 +138,4 @@
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/WebAPI.pdb
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/WebAPI.genruntimeconfig.cache
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/ref/WebAPI.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/WebAPI.sourcelink.json
