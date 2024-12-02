@@ -14,6 +14,16 @@ public static class StockMapper {
             Industry = stockModel.Industry,
             MarketCap = stockModel.MarketCap,
         };
+    }
 
+    public static Stock ToStockFromCreateDTO(this CreateStockRequestDTO stockRequestDto) {
+        return new Stock {
+            Symbol = stockRequestDto.Symbol,
+            LastDiv = stockRequestDto.LastDiv,
+            CompanyName = stockRequestDto.CompanyName,
+            Purchase = stockRequestDto.Purchase,
+            Industry = stockRequestDto.Industry,
+            MarketCap = stockRequestDto.MarketCap,
+        };
     }
 }
