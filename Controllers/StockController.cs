@@ -25,7 +25,7 @@ public class StockController : ControllerBase {
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetStockById([FromRoute] int id) {
-        var stockById = await _context.Stock.FindAsync(id);
+        var stockById = await _context.Stock.FirstOrDefaultAsync(x=>x.Id ==id);
         return stockById != null ? Ok(stockById.ToStockDto()) : NotFound();
     }
 
