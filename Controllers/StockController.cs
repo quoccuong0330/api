@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.DTOs.Stock;
+using WebAPI.Helpers;
 using WebAPI.Interfaces;
 using WebAPI.Mappers;
 
@@ -19,8 +20,8 @@ public class StockController : ControllerBase {
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll() {
-        var stocks = await _stockRepository.GetAllAsync();
+    public async Task<IActionResult> GetAll([FromQuery] QueryObject query) {
+        var stocks = await _stockRepository.GetAllAsync(query);
         var stocksDto = stocks.Select(s => s.ToStockDto());
         return Ok(stocksDto);
     }
