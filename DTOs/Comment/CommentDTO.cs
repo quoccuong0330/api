@@ -1,6 +1,6 @@
-namespace WebAPI.Models;
+namespace WebAPI.DTOs.Comment;
 
-public class Comment {
+public class CommentDTO {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;

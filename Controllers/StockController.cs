@@ -12,12 +12,10 @@ namespace WebAPI.Controllers;
 [Route("api/stock")]
 [ApiController]
 public class StockController : ControllerBase {
-    private readonly ApplicationDBContext _context;
     private readonly IStockRepository _stockRepository;
 
     public StockController(ApplicationDBContext dbContext,IStockRepository stockRepository) {
         _stockRepository = stockRepository;
-        _context = dbContext;
     }
 
     [HttpGet]
@@ -48,7 +46,7 @@ public class StockController : ControllerBase {
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteStockById([FromRoute] int id) {
         var stockModel = await _stockRepository.DeleteStockAsync(id);
-        return  stockModel != null ? Ok(stockModel) : NotFound();;
+        return  stockModel != null ? NoContent() : NotFound();;
     }
     
 }

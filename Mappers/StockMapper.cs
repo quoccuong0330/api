@@ -13,6 +13,8 @@ public static class StockMapper {
             Purchase = stockModel.Purchase,
             Industry = stockModel.Industry,
             MarketCap = stockModel.MarketCap,
+            Comments = stockModel.Comments.Select(c=>c.toCommentDTO()).ToList()
+
         };
     }
 

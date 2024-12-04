@@ -9,7 +9,7 @@ public class ApplicationDBContext : DbContext{
     }
     
     public DbSet<Stock> Stock { get; set; }
-    public DbSet<Comment> Comments { get; set; }
+    public DbSet<Comment?> Comments { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
