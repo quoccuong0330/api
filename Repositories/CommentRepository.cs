@@ -14,7 +14,7 @@ public class CommentRepository :ICommentRepository {
         _context = context;
     }
 
-    public async Task<List<Comment?>> GetAllComment() {
+    public async Task<List<Comment?>> GetAllCommentAsync() {
         return await _context.Comments.ToListAsync();
     }
 
@@ -43,7 +43,7 @@ public class CommentRepository :ICommentRepository {
         if(isCommentExist==null) return null;
         isCommentExist.Content = updateComment.Content;
         isCommentExist.Title = updateComment.Title;
-        isCommentExist.UpdateOn = updateComment.UpdateOn;
+        isCommentExist.UpdateOn = DateTime.Now;
         await _context.SaveChangesAsync();
         return isCommentExist;
     }
