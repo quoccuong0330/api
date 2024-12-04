@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,6 +40,7 @@ namespace WebAPI.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StockId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -48,6 +51,15 @@ namespace WebAPI.Migrations
                         column: x => x.StockId,
                         principalTable: "Stock",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Stock",
+                columns: new[] { "Id", "CompanyName", "Industry", "LastDiv", "MarketCap", "Purchase", "Symbol" },
+                values: new object[,]
+                {
+                    { 1, "Apple Inc.", "Technology", 1.23m, 2500000000000L, 150.00m, "AAPL" },
+                    { 2, "Microsoft Corp.", "Technology", 1.45m, 2200000000000L, 200.00m, "MSFT" }
                 });
 
             migrationBuilder.CreateIndex(

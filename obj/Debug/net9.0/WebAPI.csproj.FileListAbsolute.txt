@@ -139,3 +139,7 @@
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/WebAPI.genruntimeconfig.cache
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/ref/WebAPI.dll
 /Users/macos/Documents/c#/WebAPI/WebAPI/obj/Debug/net9.0/WebAPI.sourcelink.json
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Newtonsoft.Json.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll

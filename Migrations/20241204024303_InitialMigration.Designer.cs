@@ -12,8 +12,8 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241202101833_init")]
-    partial class init
+    [Migration("20241204024303_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,9 @@ namespace WebAPI.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateOn")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -86,6 +89,28 @@ namespace WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stock");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyName = "Apple Inc.",
+                            Industry = "Technology",
+                            LastDiv = 1.23m,
+                            MarketCap = 2500000000000L,
+                            Purchase = 150.00m,
+                            Symbol = "AAPL"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyName = "Microsoft Corp.",
+                            Industry = "Technology",
+                            LastDiv = 1.45m,
+                            MarketCap = 2200000000000L,
+                            Purchase = 200.00m,
+                            Symbol = "MSFT"
+                        });
                 });
 
             modelBuilder.Entity("WebAPI.Models.Comment", b =>
