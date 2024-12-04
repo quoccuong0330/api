@@ -28,7 +28,6 @@ public static class CommentMapper {
         return new Comment {
             Title = commentModel.Title,
             Content = commentModel.Content,
-            UpdateOn = DateTime.Now
            
         };
     }
