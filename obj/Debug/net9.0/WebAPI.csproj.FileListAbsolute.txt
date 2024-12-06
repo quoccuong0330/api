@@ -143,3 +143,5 @@
 /Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Newtonsoft.Json.dll
 /Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/macos/Documents/c#/WebAPI/WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

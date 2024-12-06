@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Data;
 
@@ -11,9 +12,11 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241204144553_Identity")]
+    partial class Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,20 +50,6 @@ namespace WebAPI.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "34e04342-8260-4f0a-9ffe-0b62f154747a",
-                            Name = "Alice",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "393fb099-4b28-46bd-88fc-8815295a6f33",
-                            Name = "Rai",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -233,6 +222,28 @@ namespace WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stock");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyName = "Apple Inc.",
+                            Industry = "Technology",
+                            LastDiv = 1.23m,
+                            MarketCap = 2500000000000L,
+                            Purchase = 150.00m,
+                            Symbol = "AAPL"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyName = "Microsoft Corp.",
+                            Industry = "Technology",
+                            LastDiv = 1.45m,
+                            MarketCap = 2200000000000L,
+                            Purchase = 200.00m,
+                            Symbol = "MSFT"
+                        });
                 });
 
             modelBuilder.Entity("WebAPI.Models.User", b =>

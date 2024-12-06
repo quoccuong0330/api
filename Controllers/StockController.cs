@@ -1,4 +1,5 @@
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
@@ -20,6 +21,7 @@ public class StockController : ControllerBase {
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query) {
         var stocks = await _stockRepository.GetAllAsync(query);
         var stocksDto = stocks.Select(s => s.ToStockDto());
