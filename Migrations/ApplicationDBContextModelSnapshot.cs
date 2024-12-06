@@ -51,13 +51,13 @@ namespace WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "34e04342-8260-4f0a-9ffe-0b62f154747a",
+                            Id = "5eb7ebcd-30fe-404a-809c-504b36403f0d",
                             Name = "Alice",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "393fb099-4b28-46bd-88fc-8815295a6f33",
+                            Id = "d958374f-5b7a-4916-b360-58449a7263d0",
                             Name = "Rai",
                             NormalizedName = "USER"
                         });
@@ -201,6 +201,21 @@ namespace WebAPI.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.Portfolio", b =>
+                {
+                    b.Property<int>("stockId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("stockId", "userId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Portfolio");
+                });
+
             modelBuilder.Entity("WebAPI.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
@@ -232,7 +247,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stock");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("WebAPI.Models.User", b =>
@@ -358,9 +373,35 @@ namespace WebAPI.Migrations
                         .HasForeignKey("StockId");
                 });
 
+            modelBuilder.Entity("WebAPI.Models.Portfolio", b =>
+                {
+                    b.HasOne("WebAPI.Models.Stock", "Stock")
+                        .WithMany("Portfolios")
+                        .HasForeignKey("stockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebAPI.Models.User", "User")
+                        .WithMany("Portfolios")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stock");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebAPI.Models.Stock", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Portfolios");
+                });
+
+            modelBuilder.Entity("WebAPI.Models.User", b =>
+                {
+                    b.Navigation("Portfolios");
                 });
 #pragma warning restore 612, 618
         }
