@@ -15,11 +15,11 @@ public class CommentRepository :ICommentRepository {
     }
 
     public async Task<List<Comment?>> GetAllCommentAsync() {
-        return await _context.Comments.ToListAsync();
+        return await _context.Comments.Include(x=>x.User).ToListAsync();
     }
 
     public async Task<Comment?> GetCommentByIdAsync(int idComment) {
-        var isStockExist = await _context.Comments.FirstOrDefaultAsync(x=>x.Id==idComment);
+        var isStockExist = await _context.Comments.Include(x=>x.User).FirstOrDefaultAsync(x=>x.Id==idComment);
         return isStockExist;
     }
 

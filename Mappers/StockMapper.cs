@@ -4,7 +4,7 @@ using WebAPI.Models;
 namespace WebAPI.Mappers;
 
 public static class StockMapper {
-    public static StockDTO ToStockDto(this Stock stockModel) {
+    public static StockDTO ToStockDto(this Stock? stockModel) {
         return new StockDTO {
             Id = stockModel.Id,
             Symbol = stockModel.Symbol,
@@ -18,7 +18,7 @@ public static class StockMapper {
         };
     }
 
-    public static Stock ToStockFromCreateDTO(this CreateStockRequestDTO stockRequestDto) {
+    public static Stock? ToStockFromCreateDTO(this CreateStockRequestDTO stockRequestDto) {
         return new Stock {
             Symbol = stockRequestDto.Symbol,
             LastDiv = stockRequestDto.LastDiv,

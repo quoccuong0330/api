@@ -15,7 +15,7 @@ public class StockRepository : IStockRepository {
     }
     
     public async Task<List<Stock>> GetAllAsync(QueryObject queryObject) {
-        var stocks =   _context.Stock.Include(i => i.Comments).AsQueryable();
+        var stocks =   _context.Stock.Include(i => i.Comments).ThenInclude(x=>x.User).AsQueryable();
         if (!string.IsNullOrWhiteSpace(queryObject.CompanyName)) {
             stocks = stocks.Where(s => s.CompanyName.Contains(queryObject.CompanyName));
         }
@@ -40,7 +40,12 @@ public class StockRepository : IStockRepository {
         return await _context.Stock.Include(i => i.Comments).FirstOrDefaultAsync(x=>x.Id == id);
     }
 
-    public async Task<Stock> CreateNewStockAsync(Stock newStock) {
+    public async Task<Stock?> GetBySymbolAsync(string symbol) {
+        return await _context.Stock.FirstOrDefaultAsync(x=>x.Symbol == symbol);
+
+    }
+
+    public async Task<Stock?> CreateNewStockAsync(Stock? newStock) {
          await _context.Stock.AddAsync(newStock);
          await _context.SaveChangesAsync();
          return newStock;
@@ -69,7 +74,7 @@ public class StockRepository : IStockRepository {
          return stockModel;
     }
 
-    public async Task<bool> isStockExists(int id) {
+    public async Task<bool> IsStockExists(int id) {
         return await _context.Stock.AnyAsync(x => x.Id == id);
     }
 }
