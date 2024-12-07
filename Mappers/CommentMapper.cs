@@ -12,6 +12,7 @@ public static class CommentMapper {
             CreateOn = commentModel.CreateOn,
             UpdateOn = commentModel.UpdateOn,
             StockId = commentModel.StockId,
+            CreateBy = commentModel.User.UserName,
         };
     }
 
@@ -20,7 +21,6 @@ public static class CommentMapper {
             Title = commentModel.Title,
             Content = commentModel.Content,
             StockId = stockId
-           
         };
     }
     

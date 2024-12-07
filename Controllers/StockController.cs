@@ -7,6 +7,7 @@ using WebAPI.DTOs.Stock;
 using WebAPI.Helpers;
 using WebAPI.Interfaces;
 using WebAPI.Mappers;
+using WebAPI.Models;
 
 
 namespace WebAPI.Controllers;
@@ -24,7 +25,7 @@ public class StockController : ControllerBase {
     [Authorize]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query) {
         var stocks = await _stockRepository.GetAllAsync(query);
-        var stocksDto = stocks.Select(s => s.ToStockDto());
+        var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();
         return Ok(stocksDto);
     }
 

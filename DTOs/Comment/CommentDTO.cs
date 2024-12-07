@@ -1,3 +1,5 @@
+using WebAPI.Models;
+
 namespace WebAPI.DTOs.Comment;
 
 public class CommentDTO {
@@ -7,4 +9,6 @@ public class CommentDTO {
     public DateTime CreateOn { get; set; } = DateTime.Now;
     public DateTime UpdateOn { get; set; } = DateTime.Now;
     public int? StockId { get; set; }
+    public string CreateBy { get; set; } = string.Empty;
+
 }

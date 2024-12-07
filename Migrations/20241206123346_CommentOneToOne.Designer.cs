@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Data;
 
@@ -11,9 +12,11 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241206123346_CommentOneToOne")]
+    partial class CommentOneToOne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,13 +54,13 @@ namespace WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "30bfefe0-0cfa-4ddd-95f4-19638f76c8f3",
+                            Id = "2e4c4112-007f-41a3-8ea1-d1e9617c9696",
                             Name = "Alice",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "44b7e4bf-5781-4d79-94a9-7bda943d28de",
+                            Id = "b5000135-bd2c-4748-9e97-ff681ca6194c",
                             Name = "Rai",
                             NormalizedName = "USER"
                         });
@@ -194,15 +197,9 @@ namespace WebAPI.Migrations
                     b.Property<DateTime>("UpdateOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("userID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("StockId");
-
-                    b.HasIndex("userID");
 
                     b.ToTable("Comments");
                 });
@@ -377,14 +374,6 @@ namespace WebAPI.Migrations
                     b.HasOne("WebAPI.Models.Stock", null)
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
-
-                    b.HasOne("WebAPI.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Portfolio", b =>
